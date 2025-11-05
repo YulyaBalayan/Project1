@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги - Гостиница "Уют"</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        nav {
+            background-color: #333;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin-right: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+        
+        nav a:hover {
+            background-color: #555;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .internal-nav {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .internal-nav a {
+            margin-right: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .internal-nav a:hover {
+            text-decoration: underline;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #f8f9fa;
+        }
+        
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #17a2b8;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #e9ecef;
+        }
+        
+        .service-image {
+            width: 100px;
+            height: 75px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+        
+        .service-image:hover {
+            filter: brightness(1.2) contrast(1.1);
+            box-shadow: 0 0 0 3px white;
+        }
+        
+        .thumbnail {
+            width: 200px;
+            height: 150px;
+            border: 2px solid #17a2b8;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+        
+        .thumbnail:hover {
+            filter: brightness(1.2) contrast(1.1);
+            box-shadow: 0 0 0 3px white;
+            border-color: #138496;
+        }
+        
+        .service-section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .services-table .service-image {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .services-table .service-image:hover {
+            filter: brightness(1.2) contrast(1.1);
+            box-shadow: 0 0 0 3px white;
+        }
+        
+        .external-link {
+            color: #28a745;
+            text-decoration: none;
+        }
+        
+        .external-link:hover {
+            color: #218838;
+            text-decoration: none;
+        }
+        
+        nav a.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">На главную</a></li>
+            <li><a href="rooms.html">Номера</a></li>
+            <li><a href="services.html" class="active">Услуги</a></li>
+            <li><a href="gallery.html">Галерея</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="dom.html">DOM</a></li>
+            <li><a href="latin.html">Латинские символы</a></li>
+            <li><a href="task.html">Задача</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Наши услуги</h1>
+        
+        <div class="internal-nav">
+            <a href="#restaurant">Раздел 1: Ресторан</a>
+            <a href="#spa">Раздел 2: SPA-услуги</a>
+            <a href="#conference">Раздел 3: Конференц-залы</a>
+            <a href="#additional">Раздел 4: Дополнительные услуги</a>
+            <a href="#top">К началу</a>
+        </div>       
+        <div class="service-section">
+            <h2 id="restaurant">Ресторан "Гурман"</h2>            
+            <p>
+                <a href="https://i.pinimg.com/originals/c1/92/09/c19209766d6c7189e405bd05b910a21f.jpg" target="_blank">
+                    <img src="rest.jpg" alt="Ресторан" class="thumbnail">
+                </a>
+            </p>
+            
+            <h3>Меню ресторана:</h3>
+            <ol>
+                <li>Завтрак (7:00 - 11:00)
+                    <ul>
+                        <li>Континентальный завтрак</li>
+                        <li>Английский завтрак</li>
+                        <li>Диетический завтрак</li>
+                    </ul>
+                </li>
+                <li>Обед (12:00 - 16:00)
+                    <ul>
+                        <li>Бизнес-ланч</li>
+                        <li>Детское меню</li>
+                        <li>Вегетарианские блюда</li>
+                    </ul>
+                </li>
+                <li>Ужин (18:00 - 23:00)
+                    <ul>
+                        <li>Авторская кухня</li>
+                        <li>Международная кухня</li>
+                        <li>Десерты</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        
+        <div class="service-section">
+            <h2 id="spa">SPA-услуги</h2>
+            
+            <p>
+                <a href="https://selectitaly.com/images/0241_35279_417443118_l.jpg" target="_blank">
+                    <img src="spa.jpg" alt="SPA" class="thumbnail">
+                </a>
+            </p>
+            
+            <h3>SPA-программы:</h3>
+            <ul>
+                <li>Массаж
+                    <ul>
+                        <li>Классический массаж</li>
+                        <li>Антицеллюлитный массаж</li>
+                        <li>Релакс массаж</li>
+                    </ul>
+                </li>
+                <li>Косметология
+                    <ul>
+                        <li>Чистка лица</li>
+                        <li>Маски для лица</li>
+                        <li>Уход за телом</li>
+                    </ul>
+                </li>
+                <li>Водные процедуры
+                    <ul>
+                        <li>Сауна</li>
+                        <li>Хаммам</li>
+                        <li>Джакузи</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="service-section">
+            <h2 id="conference">Конференц-залы</h2>
+            
+            <p>
+                <a href="https://mantera.ru/upload/iblock/2c6/3ckfudwvmyo7lb3r5of9r4atmnr0rxfq.webp" target="_blank">
+                    <img src="confa.jpg" alt="Конференц-зал" class="thumbnail">
+                </a>
+            </p>
+            
+            <h3>Типы залов:</h3>
+            <ul>
+                <li>Большой зал (до 100 человек)</li>
+                <li>Средний зал (до 50 человек)</li>
+                <li>Малый зал (до 20 человек)</li>
+                <li>VIP-зал (до 10 человек)</li>
+            </ul>
+        </div>
+        
+        <div class="service-section">
+            <h2 id="additional">Список дополнительных услуг</h2>
+            
+            <ol>
+                <li>Транспортные услуги
+                    <ul>
+                        <li>Трансфер из аэропорта</li>
+                        <li>Аренда автомобиля</li>
+                        <li>Заказ такси</li>
+                    </ul>
+                </li>
+                <li>Бизнес-услуги
+                    <ul>
+                        <li>Копирование документов</li>
+                        <li>Факс</li>
+                        <li>Интернет</li>
+                    </ul>
+                </li>
+                <li>Развлечения
+                    <ul>
+                        <li>Экскурсии</li>
+                        <li>Билеты в театр</li>
+                        <li>Спортивные мероприятия</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        
+        <h2>Прайс-лист услуг</h2>
+        <table class="services-table">
+            <thead>
+                <tr>
+                    <th>Услуга</th>
+                    <th>Изображение</th>
+                    <th>Продолжительность</th>
+                    <th>Цена</th>
+                    <th>Заказ</th>
+                </tr>
+            </thead>
+<tbody>
+    <tr>
+        <td>Массаж классический</td>
+        <td>
+            <a href="mass.jpg" target="_blank">
+                <img src="mass.jpg" alt="Массаж" class="service-image">
+            </a>
+        </td>
+        <td>60 минут</td>
+        <td>3 000 ₽</td>
+        <td><a href="contacts.html#booking">Заказать</a></td>
+    </tr>
+    <tr>
+        <td>Бизнес-ланч</td>
+        <td>
+            <a href="lunch.jpg" target="_blank">
+                <img src="lunch.jpg" alt="Ланч" class="service-image">
+            </a>
+        </td>
+        <td>45 минут</td>
+        <td>1 500 ₽</td>
+        <td><a href="contacts.html#booking">Заказать</a></td>
+    </tr>
+    <tr>
+        <td>Конференц-зал</td>
+        <td>
+            <a href="confer.jpg" target="_blank">
+                <img src="confer.jpg" alt="Зал" class="service-image">
+            </a>
+        </td>
+        <td>4 часа</td>
+        <td>8 000 ₽</td>
+        <td><a href="contacts.html#booking">Заказать</a></td>
+    </tr>
+    <tr>
+        <td>Трансфер</td>
+        <td>
+            <a href="transfer.jpg" target="_blank">
+                <img src="transfer.jpg" alt="Трансфер" class="service-image">
+            </a>
+        </td>
+        <td>30 минут</td>
+        <td>2 000 ₽</td>
+        <td><a href="contacts.html#booking">Заказать</a></td>
+    </tr>
+</tbody>
+</table>
+
+        <h2>Полезные ссылки</h2>
+        <p>Дополнительная информация:</p>
+        <ul>
+            <li><a href="https://www.booking.com" target="_blank" class="external-link">Бронирование онлайн</a></li>
+            <li><a href="https://www.tripadvisor.ru" target="_blank" class="external-link">Отзывы на TripAdvisor</a></li>
+            <li><a href="https://www.google.com/maps" target="_blank" class="external-link">Карта города</a></li>
+        </ul>
+      <p style="text-align: center; margin-top: 40px;">
+            <a href="#top">Вернуться к началу</a> | 
+            <a href="contacts.html">Связаться с нами</a>
+        </p>
+        
+    </div>
+   
+</body>
+</html>

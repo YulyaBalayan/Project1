@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Номера - Гостиница "Уют"</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        nav {
+            background-color: #333;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin-right: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        nav a:hover {
+            background-color: #555;
+        }
+        
+        nav a.active {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .internal-nav {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .internal-nav a {
+            margin-right: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .internal-nav a:hover {
+            text-decoration: underline;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #f8f9fa;
+        }
+        
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #e9ecef;
+        }
+        
+        .room-image {
+            width: 100px;
+            height: 75px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+        
+        .room-image:hover {
+            filter: brightness(1.2) contrast(1.1);
+            box-shadow: 0 0 0 3px white;
+        }
+        
+        .room-features {
+            margin: 20px 0;
+        }
+        
+        .room-features ul {
+            padding-left: 20px;
+        }
+        
+        .room-features li {
+            margin-bottom: 5px;
+        }
+        
+        .thumbnail {
+            width: 200px;
+            height: 150px;
+            border: 2px solid #007bff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+        
+        .thumbnail:hover {
+            filter: brightness(1.2) contrast(1.1);
+            box-shadow: 0 0 0 3px white;
+            border-color: #0056b3;
+        }
+        
+        .image-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .image-caption {
+            margin: 5px 0 0 0;
+            text-align: left;
+            color: #666;
+            font-style: italic;
+        }
+
+       .external-link {
+            color: #28a745;
+            text-decoration: none;
+        }
+        
+        .external-link:hover {
+            color: #218838;
+            text-decoration: none;
+        }
+        
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">На главную</a></li>
+            <li><a href="rooms.html" class="active">Номера</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="gallery.html">Галерея</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="dom.html">DOM</a></li>
+            <li><a href="latin.html">Латинские символы</a></li>
+            <li><a href="task.html">Задача</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Наши номера</h1>
+        
+        <div class="internal-nav">
+            <a href="#luxury">Раздел 1: Люксовые номера</a>
+            <a href="#standard">Раздел 2: Стандартные номера</a>
+            <a href="#economy">Раздел 3: Эконом номера</a>
+            <a href="#top">К началу</a>
+        </div>
+        
+        <h2 id="luxury">Люксовые номера</h2>
+        
+        <div class="image-container">
+            <a href="https://i.pinimg.com/originals/ba/91/1c/ba911c6f5f7915ae61cc9a376a1afae2.jpg" target="_blank">
+                <img src="lux.jpg" alt="Люксовый номер" class="thumbnail">
+            </a>
+            <p class="image-caption">Нажмите на изображение для просмотра в полном размере</p>
+        </div>
+
+        <div class="room-features">
+            <h3>Особенности люксовых номеров:</h3>
+            <ol>
+                <li>Просторная площадь от 50 м²</li>
+                <li>Отдельная гостиная зона</li>
+                <li>Ванная комната с джакузи</li>
+                <li>Панорамные окна</li>
+                <li>Мини-бар</li>
+                <li>Персональный консьерж</li>
+            </ol>
+        </div>
+        
+        <h2 id="standard">Стандартные номера</h2>
+        
+        <div class="image-container">
+            <a href="https://i.broni.travel/img/7134/422118.jpeg" target="_blank">
+                <img src="av.jpg" alt="Стандартный номер" class="thumbnail">
+            </a>
+            <p class="image-caption">Нажмите на изображение для просмотра в полном размере</p>
+        </div>
+
+        <div class="room-features">
+            <h3>Особенности стандартных номеров:</h3>
+            <ul>
+                <li>Площадь 25-30 м²</li>
+                <li>Двуспальная кровать</li>
+                <li>Современная мебель</li>
+                <li>Собственная ванная комната</li>
+                <li>Телевизор с плоским экраном</li>
+                <li>Бесплатный Wi-Fi</li>
+            </ul>
+        </div>
+        
+        <h2 id="economy">Эконом номера</h2>
+        
+        <div class="image-container">
+            <a href="https://i.broni.travel/img/4482/776593.jpeg" target="_blank">
+                <img src="eco.jpg" alt="Экономный номер" class="thumbnail">
+            </a>
+            <p class="image-caption">Нажмите на изображение для просмотра в полном размере</p>
+        </div>
+        
+        <div class="room-features">
+            <h3>Особенности эконом номеров:</h3>
+            <ul>
+                <li>Компактная площадь 15-20 м²</li>
+                <li>Односпальная или двуспальная кровать</li>
+                <li>Необходимая мебель</li>
+                <li>Общая ванная комната на этаже</li>
+                <li>Базовые удобства</li>
+            </ul>
+        </div>
+        
+        <h2>Сравнительная таблица номеров</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Тип номера</th>
+                    <th>Изображение</th>
+                    <th>Площадь</th>
+                    <th>Цена за ночь</th>
+                    <th>Бронирование</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Люксовый</td>
+                    <td>
+                        <a href="lux.jpg" target="_blank">
+                            <img src="lux.jpg" alt="Люкс" class="room-image">
+                        </a>
+                    </td>
+                    <td>50 м²</td>
+                    <td>15 000 ₽</td>
+                    <td><a href="contacts.html#booking">Забронировать</a></td>
+                </tr>
+                <tr>
+                    <td>Стандартный</td>
+                    <td>
+                        <a href="av.jpg" target="_blank">
+                            <img src="av.jpg" alt="Стандарт" class="room-image">
+                        </a>
+                    </td>
+                    <td>25 м²</td>
+                    <td>8 000 ₽</td>
+                    <td><a href="contacts.html#booking">Забронировать</a></td>
+                </tr>
+                <tr>
+                    <td>Эконом</td>
+                    <td>
+                        <a href="eco.jpg" target="_blank">
+                            <img src="eco.jpg" alt="Эконом" class="room-image">
+                        </a>
+                    </td>
+                    <td>15 м²</td>
+                    <td>4 000 ₽</td>
+                    <td><a href="contacts.html#booking">Забронировать</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Полезные ссылки</h2>
+        <p>Дополнительная информация:</p>
+        <ul>
+            <li><a href="https://www.booking.com" target="_blank" class="external-link">Бронирование онлайн</a></li>
+            <li><a href="https://www.tripadvisor.ru" target="_blank" class="external-link">Отзывы на TripAdvisor</a></li>
+            <li><a href="https://www.google.com/maps" target="_blank" class="external-link">Карта города</a></li>
+        </ul>
+        
+
+        <h2>Дополнительные услуги</h2>
+        <ul>
+            <li>Уборка номера
+                <ul>
+                    <li>Ежедневная уборка</li>
+                    <li>Смена постельного белья</li>
+                    <li>Дополнительные полотенца</li>
+                </ul>
+            </li>
+            <li>Питание
+                <ul>
+                    <li>Завтрак в номер</li>
+                    <li>Обед в ресторане</li>
+                    <li>Ужин по меню</li>
+                </ul>
+            </li>
+            <li>Транспорт
+                <ul>
+                    <li>Трансфер из аэропорта</li>
+                    <li>Аренда автомобиля</li>
+                    <li>Такси</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <p style="text-align: center; margin-top: 40px;">
+            <a href="#top">Вернуться к началу</a> | 
+            <a href="contacts.html">Связаться с нами</a>
+        </p>
+    </div>
+</body>
+</html>

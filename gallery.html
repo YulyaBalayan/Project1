@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея - Гостиница "Уют"</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        nav {
+            background-color: #333;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin-right: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+        
+        nav a:hover {
+            background-color: #555;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 1px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .internal-nav {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 1px;
+        }
+        
+        .internal-nav a {
+            margin-right: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .internal-nav a:hover {
+            text-decoration: underline;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .gallery-item {
+            text-align: center;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 1px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 0; /* Острые углы */
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .gallery-item img:hover {
+            filter: brightness(1.2) contrast(1.1);
+            box-shadow: 0 0 0 3px white;
+        }
+        
+        .thumbnail {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 0; 
+            cursor: pointer;
+            margin-right: 15px;
+            margin-bottom: 10px;
+            transition: all 0.3s;
+        }
+        
+        .thumbnail:hover {
+            filter: brightness(1.2) contrast(1.1);
+            box-shadow: 0 0 0 3px white;
+        }
+        
+        .mini-thumbnail {
+            width: 100px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 0; 
+            border: 2px solid #007bff;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .mini-thumbnail:hover {
+            filter: brightness(1.2) contrast(1.1);
+            box-shadow: 0 0 0 2px white;
+        }
+        
+        .featured-image {
+            display: flex;
+            align-items: flex-start;
+            margin: 20px 0;
+        }
+        
+        .featured-text {
+            flex: 1;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: transparent;
+            border: 2px solid #6c757d;
+            background-image: url('https://i.pinimg.com/originals/5d/ad/45/5dad45f5accb12018553ab35fdd4014a.jpg');
+        }
+        
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #6c757d;
+            color: white;
+        }
+       
+        .photo-image {
+            width: 120px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 0; /* Острые углы */
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .photo-image:hover {
+            filter: brightness(1.3) contrast(1.2);
+            box-shadow: 0 0 0 3px white;
+            z-index: 10;
+        }
+        
+        .section-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .big-image-demo {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        
+        .services-list {
+            margin: 20px 0;
+            padding: 0 20px;
+        }
+
+        .included {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .not-included {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .extra-cost {
+            color: #ffc107;
+            font-weight: bold;
+        }
+        nav a.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">На главную</a></li>
+            <li><a href="rooms.html">Номера</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="gallery.html" class="active">Галерея</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="dom.html">DOM</a></li>
+            <li><a href="latin.html">Латинские символы</a></li>
+            <li><a href="task.html">Задача</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Галерея гостиницы "Уют"</h1>
+        
+        <div class="internal-nav">
+            <a href="#rooms">Раздел 1: Номера и интерьеры</a>
+            <a href="#restaurant">Раздел 2: Ресторан и питание</a>
+            <a href="#wellness">Рздел 3: SPA и оздоровление</a>
+            <a href="#conference">Раздел 4: Бизнес-услуги</a>
+            <a href="#advantages">Раздел 5: Наши преимущества</a>
+            <a href="#top">К началу</a>
+        </div>
+        
+        <h2 id="rooms">Номера и интерьеры</h2>
+        <p class="section-description">Ознакомьтесь с комфортабельными номерами различных категорий, оборудованными всем необходимым для приятного отдыха.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <a href="https://i.pinimg.com/originals/ba/91/1c/ba911c6f5f7915ae61cc9a376a1afae2.jpg" target="_blank">
+                    <img src="lux.jpg" alt="Люксовый номер">
+                </a>
+                <p>Номер люкс</p>
+            </div>
+            
+            <div class="gallery-item">
+                <a href="https://i.broni.travel/img/7134/422118.jpeg" target="_blank">
+                    <img src="av.jpg" alt="Стандартный номер">
+                </a>
+                <p>Стандартный номер</p>
+            </div>
+            
+            <div class="gallery-item">
+                <a href="https://i.broni.travel/img/4482/776593.jpeg" target="_blank">
+                    <img src="eco.jpg" alt="Экономный номер">
+                </a>
+                <p>Эконом номер</p>
+            </div>
+        </div>
+
+        <h3>Категории номеров:</h3>
+        <ul class="services-list">
+            <li>Люкс
+                <ul>
+                    <li>Площадь: 45 м²</li>
+                    <li>Вид на город</li>
+                    <li>Гостиная зона</li>
+                </ul>
+            </li>
+            <li>Стандарт
+                <ol>
+                    <li>Одноместный</li>
+                    <li>Двуместный</li>
+                    <li>Семейный</li>
+                </ol>
+            </li>
+            <li>Эконом
+                <ul>
+                    <li>Базовые удобства</li>
+                    <li>Экономичный вариант</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2 id="restaurant">Ресторан и питание</h2>
+        <p class="section-description">Наш ресторан "Гурман" предлагает блюда европейской и русской кухни, приготовленные из свежих местных продуктов.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <a href="https://hoteldesigns.net/wp-content/uploads/2022/09/Aman-New-York-USA-Garden-Terrace-bar_37354.jpg" target="_blank">
+                    <img src="summer.jpg" alt="Летняя терраса">
+                </a>
+                <p>Летняя терраса</p>
+            </div>
+            
+            <div class="gallery-item">
+                <a href="https://static.wixstatic.com/media/c4e726_285db56f2d5e4421973f45ead672cc89~mv2_d_3000_1875_s_2.jpg/v1/fill/w_1600,h_1000,al_c,q_90/file.jpg" target="_blank">
+                    <img src="banket.jpg" alt="Банкетный зал">
+                </a>
+                <p>Банкетный зал</p>
+            </div>
+            
+            <div class="gallery-item">
+                <a href="https://c.wallhere.com/photos/93/ae/bar_cafe_chairs_tables_interior_style-694074.jpg!d" target="_blank">
+                    <img src="bar.jpg" alt="Барная стойка">
+                </a>
+                <p>Барная зона</p>
+            </div>
+        </div>
+
+        <h3>Меню ресторана:</h3>
+        <ol class="services-list">
+            <li>Завтраки
+                <ul>
+                    <li>Континентальный завтрак</li>
+                    <li>Английский завтрак</li>
+                    <li>Русский завтрак</li>
+                </ul>
+            </li>
+            <li>Основные блюда
+                <ol>
+                    <li>Мясные специалитеты</li>
+                    <li>Рыбные блюда</li>
+                    <li>Вегетарианская кухня</li>
+                </ol>
+            </li>
+            <li>Десерты и напитки
+                <ul>
+                    <li>Фирменные десерты</li>
+                    <li>Вино и коктейли</li>
+                </ul>
+            </li>
+        </ol>
+        
+        <h2 id="wellness">SPA и оздоровление</h2>
+        <p class="section-description">Расслабляющие процедуры и современное оборудование для восстановления сил и поддержания красоты в нашем SPA-комплексе.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <a href="https://avatars.mds.yandex.net/i?id=8e9c173b69df78d0fb241bef7fa971e6_l-5394680-images-thumbs&n=13" target="_blank">
+                    <img src="ma.jpg" alt="Массажный кабинет">
+                </a>
+                <p>Массажный кабинет</p>
+            </div>
+            
+            <div class="gallery-item">
+                <a href="https://frankfurt.apollo.olxcdn.com/v1/files/bdltlt2mxouk-UZ/image;s=1600x1000" target="_blank">
+                    <img src="fin.jpg" alt="Финская сауна">
+                </a>
+                <p>Финская сауна</p>
+            </div>
+            
+            <div class="gallery-item">
+                <a href="https://static.wixstatic.com/media/c4e726_2ca939cf12ae440392f50f5fd5c4435b~mv2_d_3000_1875_s_2.jpg/v1/fill/w_1600,h_1000,al_c,q_90/file.jpg" target="_blank">
+                    <img src="relax.jpg" alt="Зона релаксации">
+                </a>
+                <p>Зона релаксации</p>
+            </div>
+        </div>
+
+        <h3>Наши SPA-услуги:</h3>
+        <ul class="services-list">
+            <li>Массажи
+                <ul>
+                    <li>Классический массаж</li>
+                    <li>Тайский массаж</li>
+                    <li>Ароматерапия</li>
+                    <li>Спортивный массаж</li>
+                </ul>
+            </li>
+            <li>Водные процедуры
+                <ol>
+                    <li>Сауна</li>
+                    <li>Хаммам</li>
+                    <li>Гидромассаж</li>
+                    <li>Бассейн с подогревом</li>
+                </ol>
+            </li>
+            <li>Косметология
+                <ul>
+                    <li>Уход за лицом</li>
+                    <li>Уход за телом</li>
+                    <li>SPA-программы</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <h2 id="conference">Бизнес-услуги</h2>
+        <p class="section-description">Современные конференц-залы и переговорные комнаты для успешного проведения деловых мероприятий.</p>
+        
+        <div class="featured-image">
+            <a href="https://mantera.ru/upload/iblock/2c6/3ckfudwvmyo7lb3r5of9r4atmnr0rxfq.webp" target="_blank">
+                <img src="confa.jpg" alt="Конференц-зал" class="thumbnail">
+            </a>
+            <div class="featured-text">
+                <h3>Конференц-зал "Бизнес-класс"</h3>
+                <p>Просторный зал, оборудованный современной мультимедийной техникой, вмещает до 100 человек. Идеален для конференций, семинаров и презентаций.</p>
+            </div>
+        </div>
+
+        <h3>Бизнес-услуги:</h3>
+        <ol class="services-list">
+            <li>Конференц-залы
+                <ul>
+                    <li>Большой зал (до 100 чел.)</li>
+                    <li>Малый зал (до 30 чел.)</li>
+                    <li>Переговорные комнаты</li>
+                </ul>
+            </li>
+            <li>Оборудование
+                <ol>
+                    <li>Проекторы и экраны</li>
+                    <li>Звуковое оборудование</li>
+                    <li>Wi-Fi высокоскоростной</li>
+                </ol>
+            </li>
+            <li>Дополнительные услуги
+                <ul>
+                    <li>Кофе-брейки</li>
+                    <li>Кейтеринг</li>
+                    <li>Техническая поддержка</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h2 id="advantages">Почему стоит выбрать наш отель</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Категория</th>
+                    <th>Фотография</th>
+                    <th>Описание</th>
+                    <th>Входит в стоимость</th>
+                    <th>Ссылка на HD</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Подземный паркинг</td>
+                    <td>
+                        <a href="parking.jpg" target="_blank">
+                            <img src="parking.jpg" alt="Паркинг" class="photo-image" style="width: 100px; height: 75px; object-fit: cover; border-radius: 0;">
+                        </a>
+                    </td>
+                    <td>Удобный способ оставить свой автомобиль</td>
+                    <td class="included">Включено<br><small>(стандарт, люкс)</small></td>
+                    <td><a href="parking.jpg" target="_blank">Открыть HD (600×400)</a></td>
+                </tr>
+                <tr>
+                    <td>Ресторан</td>
+                    <td>
+                        <a href="res2.jpg" target="_blank">
+                            <img src="res2.jpg" alt="Ресторан" class="photo-image" style="width: 100px; height: 75px; object-fit: cover; border-radius: 0;">
+                        </a>
+                    </td>
+                    <td>Уютный ресторан "Гурман" с элегантным интерьером и вкусной едой</td>
+                    <td class="extra-cost">Завтрак включен<br><small>Обед/ужин - доплата</small></td>
+                    <td><a href="res2.jpg" target="_blank">Открыть HD (600×400)</a></td>
+                </tr>
+                <tr>
+                    <td>SPA</td>
+                    <td>
+                        <a href="spa2.jpg" target="_blank">
+                            <img src="spa2.jpg" alt="SPA" class="photo-image" style="width: 100px; height: 75px; object-fit: cover; border-radius: 0;">
+                        </a>
+                    </td>
+                    <td>Зона релаксации SPA-комплекса с комфортными лежаками</td>
+                    <td class="not-included">Дополнительно<br><small>от 1500 руб.</small></td>
+                    <td><a href="spa2.jpg" target="_blank">Открыть HD (600×400)</a></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p style="text-align: center; margin-top: 40px;">
+            <a href="#top">Вернуться к началу</a> | 
+            <a href="contacts.html">Связаться с нами</a>
+        </p>
+    </div>
+</body>
+</html>

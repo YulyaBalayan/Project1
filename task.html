@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Алгоритмическая задача - Гостиница "Уют"</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        nav {
+            background-color: #333;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin-right: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+        
+        nav a:hover {
+            background-color: #555;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .internal-nav {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .internal-nav a {
+            margin-right: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .internal-nav a:hover {
+            text-decoration: underline;
+        }
+        
+        .task-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border: 2px solid #dc3545;
+        }
+        
+        .task-description {
+            background-color: #fff3cd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .solution-area {
+            background-color: #d4edda;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border: 2px solid #28a745;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="number"] {
+            width: 200px;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        button {
+            background-color: #dc3545;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background-color: #c82333;
+        }
+        
+        .result-display {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            min-height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .upper-berth {
+            color: #007bff;
+        }
+        
+        .lower-berth {
+            color: #28a745;
+        }
+        
+        .compartment {
+            color: #dc3545;
+        }
+        
+        .side-berth {
+            color: #ffc107;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #f8f9fa;
+        }
+        
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #e9ecef;
+        }
+        
+        .berth-cell {
+            padding: 8px;
+            font-weight: bold;
+        }
+        
+        .upper {
+            background-color: #cce5ff;
+        }
+        
+        .lower {
+            background-color: #d4edda;
+        }
+        
+        .compartment-berth {
+            border-left: 3px solid #dc3545;
+        }
+        
+        .side-berth-cell {
+            border-left: 3px solid #ffc107;
+        }
+        
+        .thumbnail {
+            width: 200px;
+            height: 150px;
+            border: 2px solid #dc3545;
+            cursor: pointer;
+        }
+        
+        .thumbnail:hover {
+            border-color: #c82333;
+        }
+        
+        .examples {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .example-item {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: white;
+            border-radius: 3px;
+            border-left: 3px solid #007bff;
+        }
+        nav a.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">На главную</a></li>
+            <li><a href="rooms.html">Номера</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="gallery.html">Галерея</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="dom.html">DOM</a></li>
+            <li><a href="latin.html">Латинские символы</a></li>
+            <li><a href="task.html" class="active">Задача</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Алгоритмическая задача: Номер места в плацкартном вагоне</h1>
+        
+        <div class="internal-nav">
+            <a href="#task-description">Раздел 1: Описание задачи</a>
+            <a href="#solution">Раздел 2: Решение</a>
+            <a href="#examples">Раздел 3: Примеры</a>
+            <a href="#visualization">Раздел 4: Визуализация</a>
+            <a href="#top">К началу</a>
+        </div>
+        
+        <h2 id="task-description">Описание задачи</h2>
+        
+        
+        <div class="task-description">
+            <h3>Задача 1005: Номер места в плацкартном вагоне</h3>
+            <p><strong>Условие:</strong> Определить по номеру места в плацкартном вагоне, является ли оно верхним или нижним, а также находится ли оно в купе или в боковом отсеке.</p>
+            
+            <h4>Правила размещения мест в плацкартном вагоне:</h4>
+            <ul>
+                <li><strong>Купе:</strong> места 1-36 (по 4 места в купе)</li>
+                <li><strong>Боковые места:</strong> места 37-54 (по 2 места с каждой стороны)</li>
+                <li><strong>Верхние места:</strong> нечетные номера (1, 3, 5, 7, ...)</li>
+                <li><strong>Нижние места:</strong> четные номера (2, 4, 6, 8, ...)</li>
+            </ul>
+        </div>
+        
+        <h2 id="solution">Решение задачи</h2>
+        
+        <div class="solution-area">
+            <h3>Введите номер места:</h3>
+            
+            <form id="berthForm">
+                <div class="form-group">
+                    <label for="berthNumber">Номер места (1-54):</label>
+                    <input type="number" id="berthNumber" name="berthNumber" min="1" max="54" value="1" required>
+                </div>
+                
+                <button type="button" onclick="calculateBerth()">Определить тип места</button>
+                <button type="button" onclick="clearResult()">Очистить результат</button>
+            </form>
+            
+            <div class="result-display" id="result">
+                <p>Результат будет отображен здесь...</p>
+            </div>
+        </div>
+        
+        <h2 id="examples">Примеры решения</h2>
+        
+        <div class="examples">
+            <h3>Примеры для проверки:</h3>
+            
+            <div class="example-item">
+                <strong>Место 1:</strong> Верхнее, Купе
+            </div>
+            
+            <div class="example-item">
+                <strong>Место 2:</strong> Нижнее, Купе
+            </div>
+            
+            <div class="example-item">
+                <strong>Место 37:</strong> Верхнее, Боковое
+            </div>
+            
+            <div class="example-item">
+                <strong>Место 54:</strong> Нижнее, Боковое
+            </div>
+            
+            <div class="example-item">
+                <strong>Место 36:</strong> Нижнее, Купе
+            </div>
+        </div>
+        
+        <h2 id="visualization">Визуализация размещения мест</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Купе 1</th>
+                    <th>Купе 2</th>
+                    <th>Купе 3</th>
+                    <th>Купе 4</th>
+                    <th>Купе 5</th>
+                    <th>Купе 6</th>
+                    <th>Купе 7</th>
+                    <th>Купе 8</th>
+                    <th>Купе 9</th>
+                    <th>Боковые места</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="berth-cell upper compartment-berth">1</td>
+                    <td class="berth-cell upper compartment-berth">5</td>
+                    <td class="berth-cell upper compartment-berth">9</td>
+                    <td class="berth-cell upper compartment-berth">13</td>
+                    <td class="berth-cell upper compartment-berth">17</td>
+                    <td class="berth-cell upper compartment-berth">21</td>
+                    <td class="berth-cell upper compartment-berth">25</td>
+                    <td class="berth-cell upper compartment-berth">29</td>
+                    <td class="berth-cell upper compartment-berth">33</td>
+                    <td class="berth-cell upper side-berth-cell">37</td>
+                </tr>
+                <tr>
+                    <td class="berth-cell lower compartment-berth">2</td>
+                    <td class="berth-cell lower compartment-berth">6</td>
+                    <td class="berth-cell lower compartment-berth">10</td>
+                    <td class="berth-cell lower compartment-berth">14</td>
+                    <td class="berth-cell lower compartment-berth">18</td>
+                    <td class="berth-cell lower compartment-berth">22</td>
+                    <td class="berth-cell lower compartment-berth">26</td>
+                    <td class="berth-cell lower compartment-berth">30</td>
+                    <td class="berth-cell lower compartment-berth">34</td>
+                    <td class="berth-cell lower side-berth-cell">38</td>
+                </tr>
+                <tr>
+                    <td class="berth-cell upper compartment-berth">3</td>
+                    <td class="berth-cell upper compartment-berth">7</td>
+                    <td class="berth-cell upper compartment-berth">11</td>
+                    <td class="berth-cell upper compartment-berth">15</td>
+                    <td class="berth-cell upper compartment-berth">19</td>
+                    <td class="berth-cell upper compartment-berth">23</td>
+                    <td class="berth-cell upper compartment-berth">27</td>
+                    <td class="berth-cell upper compartment-berth">31</td>
+                    <td class="berth-cell upper compartment-berth">35</td>
+                    <td class="berth-cell upper side-berth-cell">39</td>
+                </tr>
+                <tr>
+                    <td class="berth-cell lower compartment-berth">4</td>
+                    <td class="berth-cell lower compartment-berth">8</td>
+                    <td class="berth-cell lower compartment-berth">12</td>
+                    <td class="berth-cell lower compartment-berth">16</td>
+                    <td class="berth-cell lower compartment-berth">20</td>
+                    <td class="berth-cell lower compartment-berth">24</td>
+                    <td class="berth-cell lower compartment-berth">28</td>
+                    <td class="berth-cell lower compartment-berth">32</td>
+                    <td class="berth-cell lower compartment-berth">36</td>
+                    <td class="berth-cell lower side-berth-cell">40</td>
+                </tr>
+                <tr>
+                    <td colspan="9" style="text-align: center; font-weight: bold;">Боковые места (продолжение)</td>
+                    <td class="berth-cell upper side-berth-cell">41</td>
+                </tr>
+                <tr>
+                    <td colspan="9" style="text-align: center; font-weight: bold;">Места 42-54</td>
+                    <td class="berth-cell lower side-berth-cell">42</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="task-section">
+            <h3>Алгоритм решения:</h3>
+            <ol>
+                <li>Проверить, что номер места находится в диапазоне 1-54</li>
+                <li>Определить верхнее/нижнее место:
+                    <ul>
+                        <li>Если номер нечетный → верхнее место</li>
+                        <li>Если номер четный → нижнее место</li>
+                    </ul>
+                </li>
+                <li>Определить купе/боковое место:
+                    <ul>
+                        <li>Если номер 1-36 → купе</li>
+                        <li>Если номер 37-54 → боковое место</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        
+        <p style="text-align: center; margin-top: 40px;">
+            <a href="#top">Вернуться к началу</a> | 
+            <a href="dom.html">DOM</a> | 
+            <a href="latin.html">Латинские символы</a>
+        </p>
+    </div>
+
+    <script>
+        //опр тип
+        function calculateBerth() {
+            const berthNumber = parseInt(document.getElementById('berthNumber').value);
+            const resultDiv = document.getElementById('result');
+            
+            //корректность
+            if (isNaN(berthNumber) || berthNumber < 1 || berthNumber > 54) {
+                resultDiv.innerHTML = '<p style="color: #dc3545;">Ошибка: Номер места должен быть от 1 до 54</p>';
+                return;
+            }
+            
+            //верх низ
+            const isUpper = berthNumber % 2 === 1;
+            const berthType = isUpper ? 'Верхнее' : 'Нижнее';
+            const berthTypeClass = isUpper ? 'upper-berth' : 'lower-berth';
+            
+            //купе бок
+            const isCompartment = berthNumber <= 36;
+            const locationType = isCompartment ? 'Купе' : 'Боковое';
+            const locationClass = isCompartment ? 'compartment' : 'side-berth';
+            
+
+            const resultHTML = `
+                <h4>Результат для места № ${berthNumber}:</h4>
+                <p><span class="${berthTypeClass}">${berthType} место</span></p>
+                <p><span class="${locationClass}">${locationType} место</span></p>
+                <hr>
+                <p><strong>Полное описание:</strong> Место № ${berthNumber} - это <span class="${berthTypeClass}">${berthType.toLowerCase()}</span> место в <span class="${locationClass}">${locationType.toLowerCase()}</span> отсеке.</p>
+            `;
+            
+            resultDiv.innerHTML = resultHTML;
+            
+
+            highlightBerthInTable(berthNumber);
+            
+
+            console.log(`Место ${berthNumber}: ${berthType}, ${locationType}`);
+        }
+        
+
+        function highlightBerthInTable(berthNumber) {
+
+            const cells = document.querySelectorAll('.berth-cell');
+            cells.forEach(cell => {
+                cell.style.backgroundColor = '';
+                cell.style.border = '';
+            });
+            
+
+            const targetCell = Array.from(cells).find(cell => 
+                cell.textContent.trim() === berthNumber.toString()
+            );
+            
+            if (targetCell) {
+                targetCell.style.backgroundColor = '#ffffcc';
+                targetCell.style.border = '2px solid #ffc107';
+                
+
+                setTimeout(() => {
+                    targetCell.style.backgroundColor = '';
+                    targetCell.style.border = '';
+                }, 7000);
+            }
+        }
+        
+
+        function clearResult() {
+            document.getElementById('result').innerHTML = '<p>Результат будет отображен здесь...</p>';
+            document.getElementById('berthNumber').value = '1';
+            
+
+            const cells = document.querySelectorAll('.berth-cell');
+            cells.forEach(cell => {
+                cell.style.backgroundColor = '';
+                cell.style.border = '';
+            });
+        }
+        
+
+        function demonstrateAllBerths() {
+            const resultDiv = document.getElementById('result');
+            let html = '<h4>Демонстрация всех мест:</h4>';
+            
+            for (let i = 1; i <= 54; i++) {
+                const isUpper = i % 2 === 1;
+                const isCompartment = i <= 36;
+                const berthType = isUpper ? 'Верхнее' : 'Нижнее';
+                const locationType = isCompartment ? 'Купе' : 'Боковое';
+                
+                html += `<p>Место ${i}: ${berthType}, ${locationType}</p>`;
+            }
+            
+            resultDiv.innerHTML = html;
+        }
+        
+  
+        document.getElementById('berthForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            calculateBerth();
+        });
+        
+
+        document.getElementById('berthNumber').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                calculateBerth();
+            }
+        });
+        
+
+        window.onload = function() {
+            console.log('Страница с алгоритмической задачей загружена');
+            console.log('Доступные функции: calculateBerth(), clearResult(), demonstrateAllBerths()');
+        };
+    </script>
+</body>
+</html>

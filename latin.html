@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Изменяем кириллицу на латиницу по клику</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        nav {
+            background-color: #333;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin-right: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+        
+        nav a:hover {
+            background-color: #555;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .internal-nav {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .internal-nav a {
+            margin-right: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .internal-nav a:hover {
+            text-decoration: underline;
+        }
+        
+        .clickable-area {
+            background-color: #fff3cd;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border: 2px solid #ffc107;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .clickable-area:hover {
+            background-color: #ffeaa7;
+            transform: scale(1.02);
+        }
+        
+        .clickable-area.clicked {
+            background-color: #d4edda;
+            border-color: #28a745;
+        }
+        
+        .data-display {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            min-height: 100px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        
+        .latin-text {
+            color: #6f42c1;
+            font-weight: bold;
+        }
+        
+        .russian-text {
+            color: #007bff;
+            font-weight: bold;
+        }
+        
+        .passport-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border: 2px solid #007bff;
+        }
+        
+        nav a.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+  <nav>
+        <ul>
+            <li><a href="index.html">На главную</a></li>
+            <li><a href="rooms.html">Номера</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="gallery.html">Галерея</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="dom.html">DOM</a></li>
+            <li><a href="latin.html"  class="active">Латинские символы</a></li>
+            <li><a href="task.html">Задача</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Изменяем кириллицу на латиницу по клику</h1>
+
+        <div class="internal-nav">
+            <a href="#passport">Раздел 1: Паспортные данные</a>
+            <a href="#interactive">Раздел 2: Интерактивные элементы</a>
+            <a href="#top">К началу</a>
+        </div>
+        <h2 id="passport">Вторая и третья страницы паспорта</h2>
+        <div class="passport-section">
+            <h3>Страница 2 паспорта</h3>
+            <p><strong>Фамилия:</strong> <span class="russian-text" id="lastName1">Балаян</span></p>
+            <p><strong>Имя:</strong> <span class="russian-text" id="firstName1">Юля</span></p>
+            <p><strong>Дата рождения:</strong> <span class="russian-text" id="birthDate1">16.07.2006</span></p>
+            <p><strong>Дата выдачи:</strong> 20.02.2020</p>
+            <p><strong>Код подразделения:</strong> 000</p>
+        </div>
+        
+        <div class="passport-section">
+            <h3>Страница 3 паспорта</h3>
+            <p><strong>Код страны:</strong> ARM</p>
+            <p><strong>Номер паспорта:</strong> AA66666666</p>
+            <p><strong>Фамилия:</strong> <span class="russian-text" id="lastName2">Балаян</span></p>
+            <p><strong>Имя:</strong> <span class="russian-text" id="firstName2">Юля</span></p>
+            <p><strong>Пол:</strong> Женский</p>
+            <p><strong>Дата рождения:</strong> <span class="russian-text" id="birthDate2">16.07.2006</span></p>
+            <p><strong>Гражданство:</strong> Республика Армения</p>
+            <p><strong>Дата выдачи:</strong> 20.02.2020</p>
+            <p><strong>Дата окончания:</strong> 20.02.2030</p>
+            <p><strong>Код подразделения:</strong> 000</p>
+        </div>
+
+        <div id="interactive">
+            <h2>Интерактивные элементы</h2>
+            
+            <div class="clickable-area" onclick="changeLastName()">
+                <h3>Нажмите для изменения фамилии на латиницу</h3>
+                <p>Кликните здесь, чтобы изменить фамилию "Балаян" на латинские символы "Balayan"</p>
+            </div>
+            
+            <div class="clickable-area" onclick="changeFirstName()">
+                <h3>Нажмите для изменения имени на латиницу</h3>
+                <p>Кликните здесь, чтобы изменить имя "Юля" на латинские символы "Yulia"</p>
+            </div>
+            
+            <div class="clickable-area" onclick="changeBirthDate()">
+                <h3>Нажмите для изменения даты рождения на латиницу</h3>
+                <p>Кликните здесь, чтобы изменить дату рождения на латинские символы</p>
+            </div>
+            
+            <div class="clickable-area" onclick="changeAllToLatin()">
+                <h3>Нажмите для изменения всех данных на латиницу</h3>
+                <p>Кликните здесь, чтобы изменить все данные (фамилию, имя, дату рождения) на латинские символы</p>
+            </div>
+            
+            <div class="clickable-area" onclick="resetToCyrillic()">
+                <h3>Нажмите для возврата к кириллице</h3>
+                <p>Кликните здесь, чтобы вернуть все данные к кириллице</p>
+            </div>
+        </div>
+
+        <div class="data-display" id="statusArea">
+            <p>Статус: Ожидание действий...</p>
+        </div>
+
+    </div>
+
+    <script>
+        //фам на лат
+        function changeLastName() {
+            const lastName1 = document.getElementById('lastName1');
+            const lastName2 = document.getElementById('lastName2');
+            
+            if (lastName1 && lastName2) {
+                lastName1.textContent = 'Balayan';
+                lastName2.textContent = 'Balayan';
+                lastName1.className = 'latin-text';
+                lastName2.className = 'latin-text';
+                updateStatus('Фамилия изменена на латиницу: Балаян → Balayan');
+            }
+        }
+
+        //имя на лат
+        function changeFirstName() {
+            const firstName1 = document.getElementById('firstName1');
+            const firstName2 = document.getElementById('firstName2');
+            
+            if (firstName1 && firstName2) {
+                firstName1.textContent = 'Yulya';
+                firstName2.textContent = 'Yulya';
+                firstName1.className = 'latin-text';
+                firstName2.className = 'latin-text';
+                updateStatus('Имя изменено на латиницу: Юля → Yulya');
+            }
+        }
+
+        //дата на лат
+        function changeBirthDate() {
+            const birthDate1 = document.getElementById('birthDate1');
+            const birthDate2 = document.getElementById('birthDate2');
+            
+            if (birthDate1 && birthDate2) {
+                birthDate1.textContent = '16.07.2006';
+                birthDate2.textContent = '16.07.2006';
+                birthDate1.className = 'latin-text';
+                birthDate2.className = 'latin-text';
+                updateStatus('Дата рождения изменена на латиницу');
+            }
+        }
+
+        //все на лат
+        function changeAllToLatin() {
+            changeLastName();
+            changeFirstName();
+            changeBirthDate();
+            updateStatus('Все данные изменены на латиницу');
+        }
+
+        //обратно к кир
+        function resetToCyrillic() {
+            const elements = [
+                {id: 'lastName1', value: 'Балаян'},
+                {id: 'lastName2', value: 'Балаян'},
+                {id: 'firstName1', value: 'Юля'},
+                {id: 'firstName2', value: 'Юля'},
+                {id: 'birthDate1', value: '16.07.2006'},
+                {id: 'birthDate2', value: '16.07.2006'}
+            ];
+            
+            elements.forEach(element => {
+                const el = document.getElementById(element.id);
+                if (el) {
+                    el.textContent = element.value;
+                    el.className = 'russian-text';
+                }
+            });
+            
+            updateStatus('Все данные возвращены к кириллице');
+        }
+
+        //обнов статуса
+        function updateStatus(message) {
+            const statusArea = document.getElementById('statusArea');
+            if (statusArea) {
+                const timestamp = new Date().toLocaleTimeString();
+                statusArea.innerHTML = `<p><strong>Статус:</strong> ${message}</p><p><small>Время: ${timestamp}</small></p>`;
+            }
+        }
+
+
+    </script>
+</body>
+</html>

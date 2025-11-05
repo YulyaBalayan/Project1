@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM_JS. Считываем информацию из DOM</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        nav {
+            background-color: #333;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin-right: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+        
+        nav a:hover {
+            background-color: #555;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .internal-nav {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .internal-nav a {
+            margin-right: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .internal-nav a:hover {
+            text-decoration: underline;
+        }
+        
+        .passport-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border: 2px solid #007bff;
+        }
+        
+        .dom-demo {
+            background-color: #fff3cd;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            border: 1px solid #ffeaa7;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .result-area {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            min-height: 50px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #f8f9fa;
+        }
+        
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #e9ecef;
+        }
+        
+        .code-block {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        nav a.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">На главную</a></li>
+            <li><a href="rooms.html">Номера</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="gallery.html">Галерея</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="dom.html" class="active">DOM</a></li>
+            <li><a href="latin.html">Латинские символы</a></li>
+            <li><a href="task.html">Задача</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>DOM_JS. Считываем информацию из DOM</h1>
+        
+        <div class="internal-nav">
+            <a href="#passport">Раздел 1: Паспортные данные</a>
+            <a href="#dom-methods">Раздел 2: Методы DOM</a>
+            <a href="#examples">Раздел 3: Примеры работы</a>
+            <a href="#top">К началу</a>
+        </div>
+        
+        <h2 id="passport">Вторая и третья страницы паспорта</h2>
+        
+        <div class="passport-section">
+            <h3>Страница 2 паспорта</h3>
+            <p><strong>Фамилия:</strong> <span>Балаян</span></p>
+            <p><strong>Имя:</strong> <span>Юля</span></p>
+            <p><strong>Дата рождения:</strong> <span>16.07.2006</span></p>
+            <p><strong>Дата выдачи:</strong> 20.02.2020</p>
+            <p><strong>Код подразделения:</strong> 000</p>
+        </div>
+        
+        <div class="passport-section">
+            <h3>Страница 3 паспорта</h3>
+            <p><strong>Код страны:</strong> ARM</p>
+            <p><strong>Номер паспорта:</strong> AA66666666</p>
+            <p><strong>Фамилия:</strong> <span>Балаян</span></p>
+            <p><strong>Имя:</strong> <span>Юля</span></p>
+            <p><strong>Пол:</strong> Женский</p>
+            <p><strong>Дата рождения:</strong> <span>16.07.2006</span></p>
+            <p><strong>Гражданство:</strong> Республика Армения</p>
+            <p><strong>Дата выдачи:</strong> 20.02.2020</p>
+            <p><strong>Дата окончания:</strong> 20.02.2030</p>
+            <p><strong>Код подразделения:</strong> 000</p>
+        </div>
+        
+        <div class="dom-demo">
+            <h3>Демонстрация работы с DOM</h3>
+            <p>Нажмите кнопки ниже, чтобы увидеть работу различных методов DOM:</p>
+            
+            <button onclick="getDataFromDOM()">Получить данные через DOM</button>
+            <button onclick="showSpecificData()">Показать фамилию, имя, год рождения</button>
+            <button onclick="debugNodes()">Отладка структуры узлов</button>
+            
+            <div class="result-area" id="resultArea">
+                <p>Результаты будут отображены здесь...</p>
+            </div>
+        </div>
+        
+        <div class="dom-demo">
+            <h3>Скриншот браузера с результатами</h3>
+            <p>Ниже представлен скриншот браузера с результатами работы инструментов разработчика:</p>
+            <img src="console.jpg" alt="screenshot" class="photo-image" style="width: 1100px; height: 500px; object-fit: cover; border-radius: 0;">
+            <p><em>Скриншот показывает результат выполнения команды: document.getElementsByTagName('p')[2].childNodes[1].innerText</em></p>
+            
+
+        
+        <h2 id="dom-methods">Методы работы с DOM</h2>
+        
+        <h3>Основные методы:</h3>
+        <ul>
+            <li><strong>document.getElementsByTagName()</strong> - получение элементов по тегу</li>
+            <li><strong>document.getElementById()</strong> - получение элемента по ID</li>
+            <li><strong>element.innerText</strong> - получение/установка текстового содержимого</li>
+            <li><strong>element.innerHTML</strong> - получение/установка HTML содержимого</li>
+        </ul>
+  </div>
+              <p style="text-align: center; margin-top: 40px;">
+           
+            <a href="index.html">На главную</a>
+        </p>
+       
+
+    <script>
+function getDataFromDOM() {
+    const resultArea = document.getElementById('resultArea');    
+    try {
+        const paragraphs = document.getElementsByTagName('p');
+        
+        const lastName = paragraphs[0].childNodes[2].innerText;  
+        const firstName = paragraphs[1].childNodes[2].innerText;   
+        const birthDate = paragraphs[2].childNodes[2].innerText; 
+        
+        resultArea.innerHTML = `
+            <h4>Данные получены через DOM:</h4>
+            <p><strong>Фамилия:</strong> ${lastName}</p>
+            <p><strong>Имя:</strong> ${firstName}</p>
+            <p><strong>Дата рождения:</strong> ${birthDate}</p>
+            <p><em>Метод: document.getElementsByTagName('p')[n].childNodes[2].innerText</em></p>
+        `;
+    } catch (error) {
+        resultArea.innerHTML = `<p style="color: red;">Ошибка: ${error.message}</p>`;
+    }
+}
+        function showSpecificData() {
+            const resultArea = document.getElementById('resultArea');
+            
+            try {
+
+                const paragraphs = document.getElementsByTagName('p');
+                const lastName = paragraphs[0].childNodes[2].innerText;
+                const firstName = paragraphs[1].childNodes[2].innerText;
+                const birthDate = paragraphs[2].childNodes[2].innerText;
+                const lastName2 = paragraphs[7].childNodes[2].innerText;
+                const firstName2 = paragraphs[8].childNodes[2].innerText;
+                const birthDate2 = paragraphs[10].childNodes[2].innerText;
+                
+                resultArea.innerHTML = `
+                    <h4>Основные данные паспорта:</h4>
+                    <p>2 страница паспорта:</p>
+                    <p><strong>Фамилия:</strong> ${lastName}</p>
+                    <p><strong>Имя:</strong> ${firstName}</p>
+                    <p><strong>Дата рождения:</strong> ${birthDate}</p>
+                    <p>3 страница паспорта:</p><p><strong>Фамилия:</strong> ${lastName2}</p>
+                    <p><strong>Имя:</strong> ${firstName2}</p>
+                    <p><strong>Дата рождения:</strong> ${birthDate2}</p>
+                    <p><em>Метод: document.getElementsByTagName('p')[n].childNodes[1].innerText</em></p>
+                `;
+                
+            } catch (error) {
+                resultArea.innerHTML = `
+                    <h4>Ошибка при получении данных:</h4>
+                    <p style="color: red;">${error.message}</p>
+                `;
+            }
+        }
+
+        
+        //отладка узлов
+        function debugNodes() {
+            const resultArea = document.getElementById('resultArea');
+            let html = '<h4>Отладка структуры узлов:</h4>';
+            
+
+            for (let i = 0; i < 15; i++) {
+                const p = document.getElementsByTagName('p')[i];
+                if (p) {
+                    html += `<h5>Параграф ${i}: "${p.innerText}"</h5>`;
+                    html += '<ul>';
+                    for (let j = 0; j < p.childNodes.length; j++) {
+                        const node = p.childNodes[j];
+                        let nodeInfo = `Узел ${j}: тип=${node.nodeType}, имя=${node.nodeName}`;
+                        if (node.nodeType === 3) { // текстовый узел
+                            nodeInfo += `, значение="${node.nodeValue.trim()}"`;
+                        } else if (node.nodeType === 1) { // элемент
+                            nodeInfo += `, innerText="${node.innerText}"`;
+                        }
+                        html += `<li>${nodeInfo}</li>`;
+                    }
+                    html += '</ul>';
+                }
+            }
+            
+            resultArea.innerHTML = html;
+        }
+        
+        
+
+    //при загрузке 
+    window.onload = function() {
+    console.log('DOM страница загружена. Доступно элементов p:', document.getElementsByTagName('p').length);
+    
+    //демо условия
+
+    const result1 = document.getElementsByTagName('p')[0].childNodes[2].innerText
+    const result2 = document.getElementsByTagName('p')[1].childNodes[2].innerText  
+    const result3 = document.getElementsByTagName('p')[2].childNodes[2].innerText
+    console.log('Результат document.getElementsByTagName(\'p\')[0].childNodes[2].innerText:', result1);
+    console.log('Результат document.getElementsByTagName(\'p\')[1].childNodes[2].innerText:', result2);
+    console.log('Результат document.getElementsByTagName(\'p\')[2].childNodes[2].innerText:', result3);
+    };
+    </script>
+</body>
+</html>

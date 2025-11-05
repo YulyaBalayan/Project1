@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты - Гостиница "Уют"</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        nav {
+            background-color: #333;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin-right: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            display: block;
+        }
+        
+        nav a:hover {
+            background-color: #555;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .internal-nav {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .internal-nav a {
+            margin-right: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .internal-nav a:hover {
+            text-decoration: underline;
+        }
+        
+        .form-section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            border: 1px solid #dee2e6;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        input[type="password"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        
+        .radio-group,
+        .checkbox-group {
+            margin: 10px 0;
+        }
+        
+        .radio-group label,
+        .checkbox-group label {
+            display: inline;
+            font-weight: normal;
+            margin-left: 5px;
+        }
+        
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: transparent;
+            background-image: url('https://i.pinimg.com/originals/5d/ad/45/5dad45f5accb12018553ab35fdd4014a.jpg');
+        }
+        
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #28a745;
+            color: white;
+        }
+        
+        .thumbnail {
+            width: 200px;
+            height: 150px;
+            border: 2px solid #28a745;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+
+        .thumbnail:hover {
+            filter: brightness(1.2) contrast(1.1);
+            box-shadow: 0 0 0 3px white;
+            border-color: #218838;
+        }
+
+        .photo-image {
+            transition: all 0.3s ease;
+            border-radius: 0;
+            width: 100px;
+            height: 75px;
+            object-fit: cover;
+        }
+
+        .photo-image:hover {
+            filter: brightness(1.2) contrast(1.1);
+            box-shadow: 0 0 0 3px white;
+        }
+
+        a img {
+            transition: all 0.3s ease;
+        }
+
+        a:hover img {
+            filter: brightness(1.2) contrast(1.1);
+            box-shadow: 0 0 0 3px white;
+        }
+        
+        nav a.active {
+            background-color: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">На главную</a></li>
+            <li><a href="rooms.html">Номера</a></li>
+            <li><a href="services.html">Услуги</a></li>
+            <li><a href="gallery.html">Галерея</a></li>
+            <li><a href="contacts.html" class="active">Контакты</a></li>
+            <li><a href="dom.html">DOM</a></li>
+            <li><a href="latin.html">Латинские символы</a></li>
+            <li><a href="task.html">Задача</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Контакты и бронирование</h1>
+        
+        <div class="internal-nav">
+            <a href="#location">Раздел 1: Расположение</a>
+            <a href="#contacts">Раздел 2: Контактная информация</a>
+            <a href="#feedback">Раздел 3: Обратная связь</a>
+            <a href="#booking">Раздел 4: Бронирование</a>
+            <a href="#top">К началу</a>
+        </div>
+        
+        <h2 id="location">Как нас найти</h2>
+        
+        <p>
+            <a href="map.jpg" target="_blank">
+                <img src="map.jpg" alt="Карта отеля" class="thumbnail">
+            </a>
+        </p>
+        
+        <h3>Адрес и транспорт:</h3>
+        <ul>
+            <li><strong>Адрес:</strong> ул. Центральная, д. 123, г. Москва, 101000</li>
+            <li><strong>Метро:</strong> станция "Центральная" (5 минут пешком)</li>
+            <li><strong>Автобус:</strong> остановка "Гостиница Уют" (маршруты 1, 5, 12)</li>
+            <li><strong>Парковка:</strong> бесплатная для гостей отеля</li>
+        </ul>
+        
+        <h3>Ближайшие достопримечательности:</h3>
+        <ul>
+            <li>Центральный парк
+                <ul>
+                    <li>Фонтаны и скульптуры</li>
+                    <li>Детские площадки</li>
+                </ul>
+            </li>
+            <li>Исторический музей
+                <ul>
+                    <li>Постоянная экспозиция</li>
+                    <li>Временные выставки</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>Порядок обращения в службы отеля:</h3>
+        <ol>
+            <li>Обратитесь на ресепшн для получения общей информации</li>
+            <li>Свяжитесь с отделом бронирования для оформления заказа</li>
+            <li>При необходимости обратитесь в дополнительные службы</li>
+        </ol>
+        
+        <h2 id="contacts">Контактная информация</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Отдел</th>
+                    <th>Фото</th>
+                    <th>Телефон</th>
+                    <th>Email</th>
+                    <th>Часы работы</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Ресепшн</td>
+                    <td>
+                        <a href="recep.jpg" target="_blank">
+                            <img src="recep.jpg" alt="Ресепшн" class="photo-image">
+                        </a>
+                    </td>
+                    <td>+7 (495) 123-45-67</td>
+                    <td>reception@hotel-uyut.ru</td>
+                    <td>24/7</td>
+                </tr>
+                <tr>
+                    <td>Бронирование</td>
+                    <td>
+                        <a href="book.jpg" target="_blank">
+                            <img src="book.jpg" alt="Бронирование" class="photo-image">
+                        </a>
+                    </td>
+                    <td>+7 (495) 123-45-68</td>
+                    <td>booking@hotel-uyut.ru</td>
+                    <td>9:00 - 21:00</td>
+                </tr>
+                <tr>
+                    <td>Ресторан</td>
+                    <td>
+                        <a href="res2.jpg" target="_blank">
+                            <img src="res2.jpg" alt="Ресторан" class="photo-image">
+                        </a>
+                    </td>
+                    <td>+7 (495) 123-45-69</td>
+                    <td>restaurant@hotel-uyut.ru</td>
+                    <td>7:00 - 23:00</td>
+                </tr>
+                <tr>
+                    <td>SPA-центр</td>
+                    <td>
+                        <a href="spa2.jpg" target="_blank">
+                            <img src="spa2.jpg" alt="SPA-центр" class="photo-image">
+                        </a>
+                    </td>
+                    <td>+7 (495) 123-45-70</td>
+                    <td>spa@hotel-uyut.ru</td>
+                    <td>8:00 - 22:00</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2 id="feedback">Форма обратной связи</h2>
+        
+        <div class="form-section">
+        
+            <form action="https://www.bing.com/search?" id="UserEnter" name="UserEnter" target="_blank">
+                <p>Для поисковика:<input type="hidden" name="q" value="hotel feedback"></p>
+                <p>Фамилия: <input type="Text" name="last_name" size=20 value="Иванов"></p>
+                <p>Имя: <input type="Text" name="first_name" size=20 value="Иван"></p>
+                <p>Группа/Организация: <input type="Text" name="group" size=20 value="Туристическая группа"></p>
+                <p>Мобильный телефон: <input type="tel" name="mobile_phone" size=20 value="+7-900-123-45-67"></p>
+                <p>Электронная почта: <input type="email" name="email" size=20 value="client@example.com"></p>
+                
+                <p>Тип обращения:
+                    <input type="Radio" name="request_type" value="complaint">Жалоба
+                    <input type="Radio" name="request_type" value="suggestion" checked>Предложение
+                    <input type="Radio" name="request_type" value="question">Вопрос
+                </p>
+
+                <p>Отделы отеля:
+                    <input type="Checkbox" name="reception" value="yes" checked>Ресепшн
+                    <input type="Checkbox" name="restaurant" value="yes">Ресторан
+                    <input type="Checkbox" name="spa" value="yes">SPA-центр
+                    <input type="Checkbox" name="cleaning" value="yes">Уборка
+                </p>
+
+                <p>Уровень удовлетворенности
+                    <select name="satisfaction">
+                        <OPTION value="very_satisfied">Очень доволен</OPTION>
+                        <OPTION value="satisfied">Доволен</OPTION>
+                        <OPTION value="neutral">Нейтрален</OPTION>
+                        <OPTION value="dissatisfied">Не доволен</OPTION>
+                    </select>
+                </p>
+
+                <p> Сообщение:
+                    <br>
+                    <TEXTAREA cols=80 rows=4 name="message">Хотел бы оставить отзыв о качестве обслуживания</TEXTAREA>
+                </p>
+
+                <p>Дата отправки: <input type="date" name="message_date" value='2024-10-02'></p>
+                <p>Пароль: <input type="Password" name="password" size=15 value="feedback123"></p>
+                
+          
+                <p>Название файла: <input type="Text" name="000_file_name" value="Н_ОW_Г_326510_1_Ivanov.txt" size='30'></p>
+
+                <p> Тип записи в файл:
+                    <select name="010_mode">
+                        <OPTION value="a">a - дозаписать в файл</OPTION>
+                        <OPTION value="w">w - очистить файл и записать в файл</OPTION>
+                    </select>
+                </p>
+
+                <input type="hidden" name="function" value="feedback">
+                <input type="hidden" name="page_id" value="3">
+
+                <p>
+                    <input type="Reset" name="Reset" value="Обновить">
+                    <input type="Submit" name="submit" value="Отправить отзыв">
+                </p>
+            </form>
+        </div>
+        
+        <h2 id="booking">Форма бронирования</h2>
+        
+        <div class="form-section">
+        
+            <form action="https://www.bing.com/search?" id="UserEnter" name="UserEnter" target="_blank">
+                <p>Для поисковика:<input type="hidden" name="q" value="hotel booking"></p>
+                <p>Фамилия гостя: <input type="Text" name="guest_last_name" size=20 value="Петров"></p>
+                <p>Имя гостя: <input type="Text" name="guest_first_name" size=20 value="Петр"></p>
+                <p>Количество гостей: <input type="Number" name="guests_count" size=5 value="2"></p>
+                
+                <p>Тип номера:
+                    <input type="Radio" name="room_type" value="luxury">Люкс
+                    <input type="Radio" name="room_type" value="standard" checked>Стандарт
+                    <input type="Radio" name="room_type" value="economy">Эконом
+                </p>
+
+                <p>Дополнительные услуги:
+                    <input type="Checkbox" name="breakfast" value="yes" checked>Завтрак
+                    <input type="Checkbox" name="spa" value="yes">SPA
+                    <input type="Checkbox" name="transfer" value="yes">Трансфер
+                    <input type="Checkbox" name="parking" value="yes" checked>Парковка
+                </p>
+
+                <p>Способ оплаты
+                    <select name="payment_method">
+                        <OPTION value="card">Банковская карта</OPTION>
+                        <OPTION value="cash">Наличные</OPTION>
+                        <OPTION value="online">Онлайн оплата</OPTION>
+                    </select>
+                </p>
+
+                <p> Особые пожелания:
+                    <br>
+                    <TEXTAREA cols=80 rows=4 name="special_requests">Номер с видом на парк, высокий этаж</TEXTAREA>
+                </p>
+
+                <p>Дата заезда: <input type="date" name="checkin_date" value='2024-11-01'></p>
+                <p>Дата выезда: <input type="date" name="checkout_date" value='2024-11-05'></p>
+                <p>Пароль для подтверждения: <input type="Password" name="booking_password" size=15 value="book123"></p>
+                
+               
+                <p>Название файла: <input type="Text" name="000_file_name" value="Н_ОW_Г_326510_2_Petrov.txt" size='30'></p>
+
+                <p> Тип записи в файл:
+                    <select name="010_mode">
+                        <OPTION value="a">a - дозаписать в файл</OPTION>
+                        <OPTION value="w">w - очистить файл и записать в файл</OPTION>
+                    </select>
+                </p>
+
+                <input type="hidden" name="function" value="booking">
+                <input type="hidden" name="page_id" value="3">
+
+                <p>
+                    <input type="Reset" name="Reset" value="Обновить">
+                    <input type="Submit" name="submit" value="Забронировать номер">
+                </p>
+            </form>
+        </div>
+        
+        <h2>Социальные сети</h2>
+        <ul>
+            <li><a href="https://vk.com/hotel-uyut" target="_blank">ВКонтакте</a></li>
+            <li><a href="https://t.me/hotel_uyut" target="_blank">Telegram</a></li>
+        </ul>
+        
+        <p style="text-align: center; margin-top: 40px;">
+            <a href="#top">Вернуться к началу</a> | 
+            <a href="index.html">На главную</a>
+        </p>
+    </div>
+</body>
+</html>
